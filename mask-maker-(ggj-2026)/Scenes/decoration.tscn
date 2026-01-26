@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw6tug0fgjesm"]
+
+[ext_resource type="Script" uid="uid://bggjec2jlv8xs" path="res://Scripts/pencil_tool.gd" id="1_cee2o"]
+[ext_resource type="Script" uid="uid://ckeka7agtrejt" path="res://Scenes/decoration_control.gd" id="1_ka6i7"]
+[ext_resource type="Texture2D" uid="uid://criqw1a5ehnm5" path="res://Assets/temp mask.png" id="2_2h2g7"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ka6i7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 323)
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+color = Color(0.6667809, 0.34804964, 0.16048652, 1)
+
+[node name="TempMask" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(588, 323)
+scale = Vector2(0.92571443, 0.92571443)
+texture = ExtResource("2_2h2g7")
+
+[node name="DrawTool" type="Node2D" parent="TempMask"]
+scale = Vector2(1.0000001, 1.0000001)
+script = ExtResource("1_cee2o")
+
+[node name="Line2D" type="Line2D" parent="TempMask/DrawTool"]
+position = Vector2(-635.18506, -348.91965)
+scale = Vector2(1.0802467, 1.0802467)
