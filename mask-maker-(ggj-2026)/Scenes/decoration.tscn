@@ -30,3 +30,4 @@ script = ExtResource("1_cee2o")
 [node name="Line2D" type="Line2D" parent="TempMask/DrawTool"]
 position = Vector2(-635.18506, -348.91965)
 scale = Vector2(1.0802467, 1.0802467)
+width = 10.875
