@@ -17,7 +17,7 @@ func _input(event: InputEvent) -> void:
 				current_line.default_color = Color.BLACK
 				current_line.width = 5
 				lines_set.add_child(current_line)
-				current_line.add_point(event.position)
+				current_line.add_point(get_local_mouse_position())
 				
 				
 	if event is InputEventMouseButton and root.mouse_mode == root.ToolType.GLITTER:
@@ -31,8 +31,14 @@ func _input(event: InputEvent) -> void:
 				current_line.modulate = Color(0.643, 0.148, 0.846, 1.0)
 				current_line.width = 20
 				lines_set.add_child(current_line)
-				current_line.add_point(event.position)
+				current_line.add_point(get_local_mouse_position())
 				
 				
 	elif event is InputEventMouseMotion and is_pressed:
-		current_line.add_point(event.position)
+		current_line.add_point(get_local_mouse_position())
+
+func UpdateLineWidth(width : float) -> void:
+	current_line.width = width
+
+func UpdateLineColor(color : Color) -> void:
+	current_line.default_color = color

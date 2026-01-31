@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfqci7cbfcqkk"]
+
+[ext_resource type="Texture2D" uid="uid://b814uhr7kb3pi" path="res://Assets/mask_hapi.png" id="1_e0onf"]
+[ext_resource type="Script" uid="uid://bclltdbbkdb5y" path="res://Scripts/hud_control.gd" id="1_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://dry8ggbjfhdh8" path="res://Assets/mask_sad.png" id="2_6fbih"]
+[ext_resource type="Texture2D" uid="uid://dpq23us7p2e21" path="res://Assets/mask_angy.png" id="3_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://c6isl35ipq7pu" path="res://Assets/mask_wah.png" id="4_36asn"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t1xeu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -112.0
+offset_right = 187.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Hapi Mask" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("1_e0onf")
+icon_alignment = 1
+
+[node name="Sad Mask" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("2_6fbih")
+icon_alignment = 1
+
+[node name="Angy Mask" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("3_t1xeu")
+icon_alignment = 1
+
+[node name="Wah Mask" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("4_36asn")
+icon_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/Hapi Mask" to="." method="_on_hapi_mask_pressed"]
+[connection signal="pressed" from="HBoxContainer/Sad Mask" to="." method="_on_sad_mask_pressed"]
+[connection signal="pressed" from="HBoxContainer/Angy Mask" to="." method="_on_angy_mask_pressed"]
+[connection signal="pressed" from="HBoxContainer/Wah Mask" to="." method="_on_wah_mask_pressed"]
