@@ -15,25 +15,43 @@ enum ToolType {
 	SELECT,
 	DRAW,
 	GLITTER,
+	STICKER,
+	ERASER,
 }
 @export var mouse_mode : ToolType = ToolType.SELECT
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.is_pressed() and event.keycode == KEY_F:
-			if mouse_mode == ToolType.DRAW:
+
+func ToggleDrawTool() -> void:
+	if mouse_mode == ToolType.DRAW:
 				mouse_mode = ToolType.SELECT
-				Input.set_custom_mouse_cursor(cursor_select, Input.CURSOR_ARROW, Vector2(10,10))
-			elif mouse_mode != ToolType.DRAW:
-				mouse_mode = ToolType.DRAW
-				Input.set_custom_mouse_cursor(cursor_draw, Input.CURSOR_ARROW, Vector2(10,30))
-		elif event.is_pressed() and event.keycode == KEY_G:
-			if mouse_mode == ToolType.GLITTER:
+				Input.set_custom_mouse_cursor(cursor_select, Input.CURSOR_ARROW, Vector2(0,0))
+	elif mouse_mode != ToolType.DRAW:
+		mouse_mode = ToolType.DRAW
+		Input.set_custom_mouse_cursor(cursor_draw, Input.CURSOR_ARROW, Vector2(10,30))
+
+func ToggleGlitterTool() -> void:
+	if mouse_mode == ToolType.GLITTER:
 				mouse_mode = ToolType.SELECT
-				Input.set_custom_mouse_cursor(cursor_select, Input.CURSOR_ARROW, Vector2(10,10))
-			elif mouse_mode != ToolType.GLITTER:
-				mouse_mode = ToolType.GLITTER
-				Input.set_custom_mouse_cursor(cursor_glitter, Input.CURSOR_ARROW, Vector2(10,30))
+				Input.set_custom_mouse_cursor(cursor_select, Input.CURSOR_ARROW, Vector2(0,0))
+	elif mouse_mode != ToolType.GLITTER:
+		mouse_mode = ToolType.GLITTER
+		Input.set_custom_mouse_cursor(cursor_glitter, Input.CURSOR_ARROW, Vector2(10,30))
+
+func ToggleStickerTool() -> void:
+	if mouse_mode == ToolType.STICKER:
+		mouse_mode = ToolType.SELECT
+		Input.set_custom_mouse_cursor(cursor_select, Input.CURSOR_ARROW, Vector2(0,0))
+	elif mouse_mode != ToolType.STICKER:
+		mouse_mode = ToolType.STICKER
+		$TempMask/StickerTool.ChangeSticker($TempMask/StickerTool.sticker)
+
+func ToggleEraserTool() -> void:
+	if mouse_mode == ToolType.ERASER:
+				mouse_mode = ToolType.SELECT
+				Input.set_custom_mouse_cursor(cursor_select, Input.CURSOR_ARROW, Vector2(0,0))
+	elif mouse_mode != ToolType.ERASER:
+		mouse_mode = ToolType.ERASER
+		Input.set_custom_mouse_cursor(cursor_rubber, Input.CURSOR_ARROW, Vector2(10,30))
 
 func ChangeMask(face_value : int) -> void:
 	match face_value:

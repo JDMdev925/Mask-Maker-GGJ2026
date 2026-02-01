@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://2jyj1gdjbybn"]
+
+[ext_resource type="Texture2D" uid="uid://bxknn0lcvj187" path="res://Assets/bg.png" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://dyt827mmu03sv" path="res://Scenes/menu.gd" id="1_cayip"]
+[ext_resource type="Texture2D" uid="uid://4ifhhnsomfmd" path="res://Assets/title.png" id="2_xhh6f"]
+[ext_resource type="Theme" uid="uid://basaxxv6rb0jf" path="res://Scenes/button_theme1.tres" id="4_158mb"]
+[ext_resource type="AudioStream" uid="uid://cn7i6kuxpkk6" path="res://Assets/masksongbutisogg.ogg" id="5_wwsa2"]
+[ext_resource type="Script" uid="uid://dvmampc5lrpyg" path="res://main_manager.gd" id="6_jsrd8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhh6f"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cayip")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.78431374)
+position = Vector2(576, 324)
+texture = ExtResource("1_1rerr")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(570, 163)
+scale = Vector2(0.7284483, 0.7284483)
+texture = ExtResource("2_xhh6f")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -22.0
+offset_right = 100.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_158mb")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 64
+text = "PLAY"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 35.999996
+offset_top = 484.0
+offset_right = 1491.8141
+offset_bottom = 679.3491
+scale = Vector2(0.215, 0.215)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_xhh6f")
+text = "Programming: JDMdev"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 555.0
+offset_right = 2022.0466
+offset_bottom = 750.3491
+scale = Vector2(0.215, 0.215)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_xhh6f")
+text = "Art & Music: Bethany Bytheway"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wwsa2")
+volume_db = -10.0
+autoplay = true
+playback_type = 1
+script = ExtResource("6_jsrd8")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
